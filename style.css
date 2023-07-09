@@ -1,5 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 body {
   margin: 0;
+  padding: 0;
+}
+.AppHeader {
+  background-color: black;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.schoolinfo {
+  color: white;
+  text-align: center;
+  margin: 0;
+  font-family: 'Jua', sans-serif;
 }
 #map {
   width: 100vw;
