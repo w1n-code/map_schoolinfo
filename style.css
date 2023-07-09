@@ -7,9 +7,6 @@ body {
 .AppHeader {
   background-color: black;
   height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .schoolinfo {
   color: white;
