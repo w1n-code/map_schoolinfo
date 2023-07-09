@@ -7,6 +7,9 @@ body {
 .AppHeader {
   background-color: black;
   height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .schoolinfo {
   color: white;
@@ -16,5 +19,5 @@ body {
 }
 #map {
   width: 100vw;
-  height: 100vh;
+  height: 100vh-50px;
 }
