@@ -7,9 +7,9 @@
   var map = new kakao.maps.Map(mapContainer, mapOptions);
 
   var data = [
-    [35.887238, 128.585070, 'Daegu Iljung'],
-    [35.880818, 128.598612, 'Kyungmyeong Girls Middle School'],
-    [35.881453, 128.576243, 'Gyeongil Middle School']
+    [35.887238, 128.585070, '대구일중학교'],
+    [35.880818, 128.598612, '경명여자중학교'],
+    [35.881453, 128.576243, '경일중학교']
   ];
 
   var markers = [];
