@@ -29,6 +29,7 @@
         data[i][2] +
         '     <div class="close" onclick="closeOverlay(' + i + ')" title="close"></div>' +
         '   </div>' +
+        '	<div class="explain">안녕<br>d<br>c<br>as</div>'+
         ' </div>' +
         '</div>',
       map: map,
