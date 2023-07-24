@@ -7,9 +7,9 @@
   var map = new kakao.maps.Map(mapContainer, mapOptions);
 
   var data = [
-    [35.887238, 128.585070, '대구일중학교'],
-    [35.880818, 128.598612, '경명여자중학교'],
-    [35.881453, 128.576243, '경일중학교']
+    [35.887238, 128.585070, '대구일중학교',' 8/18',' 9/26~9/27 | 2,3학년'],
+    [35.880818, 128.598612, '경명여자중학교', ' 7/27',' 9/21~9/22 | 2,3학년'],
+    [35.881453, 128.576243, '경일중학교', ' 8/16',' 9/25~9/26 | 2,3학년']
   ];
 
   var markers = [];
@@ -26,10 +26,12 @@
         '<div class="wrap">' +
         ' <div class="info">' +
         '   <div class="title">' +
-        data[i][2] +
+        	  data[i][2] +
         '     <div class="close" onclick="closeOverlay(' + i + ')" title="close"></div>' +
         '   </div>' +
-        '	<div class="explain">안녕<br>d<br>c<br>as</div>'+
+        '	  <div class="explain"><ul>'+
+        '	  <li>개학식:'+data[i][3]+'</li><li>중간고사:'+data[i][4]+'</li><li>연습중1</li><li>연습중2</li><li>연습중3</li><li>연습중4</li>'+
+    	  '	  </ul></div>'+
         ' </div>' +
         '</div>',
       map: map,
