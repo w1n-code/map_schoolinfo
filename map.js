@@ -55,7 +55,19 @@
   }
   for (var i = 0; i < overlays.length; i++) {
     var overlayContent = overlays[i].getContent();
-    overlayContent.addEventListener('mousedown', function (e) {
-      e.stopPropagation();
+  
+    // Add custom touch handling for the overlay content
+    overlayContent.addEventListener('touchstart', function (e) {
+      var touchStartClientY = e.changedTouches[0].clientY;
+  
+      overlayContent.addEventListener('touchmove', function (e) {
+        var touchMoveClientY = e.changedTouches[0].clientY;
+        var deltaY = touchMoveClientY - touchStartClientY;
+  
+        // Adjust the touch sensitivity here (increase/decrease the value based on preference)
+        if (Math.abs(deltaY) > 10) {
+          e.stopPropagation();
+        }
+      });
     });
   }
