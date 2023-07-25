@@ -53,21 +53,23 @@
       };
     })(i));
   }
-  for (var i = 0; i < overlays.length; i++) {
-    var overlayContent = overlays[i].getContent();
-  
-    // Add custom touch handling for the overlay content
-    overlayContent.addEventListener('touchstart', function (e) {
-      var touchStartClientY = e.changedTouches[0].clientY;
-  
-      overlayContent.addEventListener('touchmove', function (e) {
-        var touchMoveClientY = e.changedTouches[0].clientY;
-        var deltaY = touchMoveClientY - touchStartClientY;
-  
-        // Adjust the touch sensitivity here (increase/decrease the value based on preference)
-        if (Math.abs(deltaY) > 10) {
-          e.stopPropagation();
-        }
-      });
+for (var i = 0; i < overlays.length; i++) {
+  var overlayContent = overlays[i].getContent();
+
+  overlayContent.addEventListener('touchstart', function (e) {
+    var touchStartY = e.changedTouches[0].clientY;
+    overlayContent.style.touchAction = 'pan-y'; // Allow vertical panning
+    overlayContent.style.overflowY = 'auto'; // Enable scrollbar
+    overlayContent.addEventListener('touchmove', function (e) {
+      var touchMoveY = e.changedTouches[0].clientY;
+      var deltaY = touchMoveY - touchStartY;
+      if (Math.abs(deltaY) > 5) {
+        e.stopPropagation(); // Prevent map panning
+      }
     });
-  }
+  });
+
+  overlayContent.addEventListener('touchend', function () {
+    overlayContent.style.touchAction = 'auto'; // Restore default touch action
+  });
+}
