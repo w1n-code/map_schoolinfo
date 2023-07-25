@@ -53,3 +53,9 @@
       };
     })(i));
   }
+  for (var i = 0; i < overlays.length; i++) {
+      var overlayContent = overlays[i].getContent();
+      overlayContent.addEventListener('touchstart', function (e) {
+        e.stopPropagation();
+      });
+	}
