@@ -54,8 +54,8 @@
     })(i));
   }
   for (var i = 0; i < overlays.length; i++) {
-      var overlayContent = overlays[i].getContent();
-      overlayContent.addEventListener('touchstart', function (e) {
-        e.stopPropagation();
-      });
-	}
+    var overlayContent = overlays[i].getContent();
+    overlayContent.addEventListener('mousedown', function (e) {
+      e.stopPropagation();
+    });
+  }
