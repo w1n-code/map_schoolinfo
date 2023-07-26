@@ -54,10 +54,11 @@
     })(i));
   }
   for (var j = 0; j < overlays.length; j++) {
-    overlays[j].addEventListener('wheel', function() {
-   	kakao.maps.event.preventMap();
-	});
-    overlays[j].addEventListener('touchstart', function() {
-    	kakao.maps.event.preventMap();
-	});
+    let wrap = document.createElement(overlays[j]);
+    wrap.className = 'wrap'; 
+    wrap.addEventListener('wheel', function() {
+        kakao.maps.event.preventMap();
+    });
+
+    overlay.setContent(wrap);
   }
