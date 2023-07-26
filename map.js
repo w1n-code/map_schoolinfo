@@ -54,7 +54,10 @@
     })(i));
   }
   for (var j = 0; j < overlays.length; j++) {
-      overlays[j].addEventListener('wheel', function() {
-   			 kakao.maps.event.preventMap();
+    overlays[j].addEventListener('wheel', function() {
+   	kakao.maps.event.preventMap();
+	});
+    overlays[j].addEventListener('touchstart', function() {
+    	kakao.maps.event.preventMap();
 	});
   }
