@@ -53,23 +53,7 @@
       };
     })(i));
   }
-for (var i = 0; i < overlays.length; i++) {
-  var overlayContent = overlays[i].getContent();
-
-  overlayContent.addEventListener('touchstart', function (e) {
-    var touchStartY = e.changedTouches[0].clientY;
-    overlayContent.style.touchAction = 'pan-y'; // Allow vertical panning
-    overlayContent.style.overflowY = 'auto'; // Enable scrollbar
-    overlayContent.addEventListener('touchmove', function (e) {
-      var touchMoveY = e.changedTouches[0].clientY;
-      var deltaY = touchMoveY - touchStartY;
-      if (Math.abs(deltaY) > 5) {
-        e.stopPropagation(); // Prevent map panning
-      }
-    });
-  });
-
-  overlayContent.addEventListener('touchend', function () {
-    overlayContent.style.touchAction = 'auto'; // Restore default touch action
-  });
-}
+  for (var j = 0; j < overlays.length; j++) {
+      overlays[j].addEventListener('wheel', function() {
+   			 kakao.maps.event.preventMap();
+	});
