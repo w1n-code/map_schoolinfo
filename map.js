@@ -89,14 +89,25 @@ for (var i = 0; i < data.length; i++) {
   overlays.push(overlay);
 }
 
-function closeOverlay(index) {
+/*function closeOverlay(index) {
   overlays[index].setMap(null);
-}
+}*/
 
-for (var i = 0; i < markers.length; i++) {
-  kakao.maps.event.addListener(markers[i], 'click', (function (index) {
-    return function () {
-      overlays[index].setMap(map);
-    };
-  })(i));
-}
+    closeAllOverlays();
+
+  // Function to close all overlays
+  function closeAllOverlays() {
+    for (var i = 0; i < overlays.length; i++) {
+      overlays[i].setMap(null);
+    }
+  }
+
+  // Add click event listeners to the markers to create and show the overlay
+  for (var i = 0; i < markers.length; i++) {
+    kakao.maps.event.addListener(markers[i], 'click', (function(index) {
+      return function() {
+        //closeAllOverlays(); // Close any previously open overlay
+        overlays[index].setMap(map); // Show the clicked overlay
+      };
+    })(i));
+  }
