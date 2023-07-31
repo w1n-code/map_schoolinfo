@@ -27,6 +27,9 @@ for (var i = 0; i < data.length; i++) {
   contentDiv.addEventListener('wheel', function() {
     kakao.maps.event.preventMap();
   });
+  contentDiv.addEventListener('touchstart', function() {
+     kakao.maps.event.preventMap();
+   });
 
   var infoDiv = document.createElement('div');
   infoDiv.className = 'info';
