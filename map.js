@@ -89,9 +89,9 @@ for (var i = 0; i < data.length; i++) {
   overlays.push(overlay);
 }
 
-/*function closeOverlay(index) {
+function closeOverlay(index) {
   overlays[index].setMap(null);
-}*/
+}
 
     closeAllOverlays();
 
