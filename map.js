@@ -24,6 +24,10 @@ for (var i = 0; i < data.length; i++) {
   var contentDiv = document.createElement('div');
   contentDiv.className = 'wrap';
 
+  contentDiv.addEventListener('wheel', function() {
+    kakao.maps.event.preventMap();
+  });
+
   var infoDiv = document.createElement('div');
   infoDiv.className = 'info';
 
@@ -56,7 +60,17 @@ for (var i = 0; i < data.length; i++) {
   liMidterm.textContent = '중간고사: ' + data[i][4];
   ul.appendChild(liMidterm);
 
-  // Add other li elements for "In practice 1", "In practice 2", etc., if required.
+  var liTest1 = document.createElement('li');
+  liTest1.textContent = 'Test 1';
+  ul.appendChild(liTest1);
+    
+  var liTest2 = document.createElement('li');
+  liTest2.textContent = 'Test 2';
+  ul.appendChild(liTest2);
+    
+  var liTest3 = document.createElement('li');
+  liTest3.textContent = 'Test 3';
+  ul.appendChild(liTest3);
 
   explainDiv.appendChild(ul);
   infoDiv.appendChild(explainDiv);
