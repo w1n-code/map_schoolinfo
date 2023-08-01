@@ -7,9 +7,9 @@ var mapOptions = {
 var map = new kakao.maps.Map(mapContainer, mapOptions);
 
 var data = [
-  [35.887238, 128.585070, '대구일중학교', '8/18', '9/26~9/27 | 2,3학년'],
-  [35.880818, 128.598612, '경명여자중학교', '7/27', '9/21~9/22 | 2,3학년'],
-  [35.881453, 128.576243, '경일중학교', '8/16', '9/25~9/26 | 2,3학년']
+  [35.887238, 128.585070, '대구일중학교', 'https://tgil.dge.ms.kr/tgilm/main.do', '8/18', '9/26~9/27 | 2,3학년'],
+  [35.880818, 128.598612, '경명여자중학교', 'https://kmschool.dge.ms.kr/kmschoolm/main.do', '7/27', '9/21~9/22 | 2,3학년'],
+  [35.881453, 128.576243, '경일중학교','https://e-kyungil.dge.ms.kr/e-kyungilm/main.do', '8/16', '9/25~9/26 | 2,3학년']
 ];
 
 var markers = [];
@@ -55,17 +55,20 @@ for (var i = 0; i < data.length; i++) {
 
   var ul = document.createElement('ul');
 
+  var liTest1 = document.createElement('li');
+  var aTag = document.createElement('a');
+  aTag.textContent = '학교 홈페이지로 이동';
+  aTag.href = data[i][3];
+  liTest1.appendChild(aTag);
+  ul.appendChild(liTest1);
+
   var liOpening = document.createElement('li');
-  liOpening.textContent = '개학식: ' + data[i][3];
+  liOpening.textContent = '개학식: ' + data[i][4];
   ul.appendChild(liOpening);
 
   var liMidterm = document.createElement('li');
-  liMidterm.textContent = '중간고사: ' + data[i][4];
+  liMidterm.textContent = '중간고사: ' + data[i][5];
   ul.appendChild(liMidterm);
-
-  var liTest1 = document.createElement('li');
-  liTest1.textContent = 'Test 1';
-  ul.appendChild(liTest1);
     
   var liTest2 = document.createElement('li');
   liTest2.textContent = 'Test 2';
