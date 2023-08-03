@@ -5,7 +5,7 @@
 .menu,.menu>div{top:0;left:0;display:flex;text-align:center;opacity:0}
 .menu-wrap{position:fixed;top:0;left:0;z-index:1}
 .menu-wrap .toggler{position:absolute;top:0;left:0;opacity:0;height:50px;width:50px;cursor:pointer;z-index:3}
-.menu-wrap .hamburger{position:absolute;top:0;left:0;height:50px;width:50px;background:0 0;padding:1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.menu-wrap .hamburger{position:absolute;top:0;left:0;height:50px;width:60px;background:0 0;padding:1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .menu-wrap .hamburger>div{position:relative;top:0;left:0;width:100%;height:2px;background:#fafafa;flex:none;display:flex;align-items:center;justify-content:center;transition:.4s}
 .menu-wrap .hamburger>div:after,
 .menu-wrap .hamburger>div:before{content:"";position:absolute;top:10px;left:0;background:inherit;height:2px;width:100%;z-index:1}
