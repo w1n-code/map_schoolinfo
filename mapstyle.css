@@ -7,8 +7,8 @@
 .info .close:hover {cursor: pointer;}
 .info .explain{font-size: 13px; font-weight: bold; overflow-y: auto;height: 80px;-webkit-overflow-scrolling: touch;}
 .info .explain::-webkit-scrollbar {width: 8px;}
-.info .explain::-webkit-scrollbar-thumb {height: 30%;background: #4D4D4D;border-radius: 20px;}
-.info .explain::-webkit-scrollbar-track {background: #B3B3B3;border-radius: 20px;}
+.info .explain::-webkit-scrollbar-thumb {height: 30%;background: #AAAAAA;border-radius: 20px;}
+.info .explain::-webkit-scrollbar-track {background: #DDDDDD;border-radius: 20px;}
 .info .body {position: relative;overflow: hidden;}
 .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
 .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
