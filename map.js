@@ -1,15 +1,16 @@
 var mapContainer = document.getElementById('map');
 var mapOptions = {
   center: new kakao.maps.LatLng(35.887238, 128.585070),
-  level: 5
+  level: 6
 };
 
 var map = new kakao.maps.Map(mapContainer, mapOptions);
 
 var data = [
-  [35.887238, 128.585070, '대구일중학교', 'https://tgil.dge.ms.kr/tgilm/main.do', '8/18', '9/26~9/27 | 2,3학년'],
-  [35.880818, 128.598612, '경명여자중학교', 'https://kmschool.dge.ms.kr/kmschoolm/main.do', '7/27', '9/21~9/22 | 2,3학년'],
-  [35.881453, 128.576243, '경일중학교','https://e-kyungil.dge.ms.kr/e-kyungilm/main.do', '8/16', '9/25~9/26 | 2,3학년']
+  [35.887238, 128.585070, '대구일중학교', 'https://tgil.dge.ms.kr', '8/18', '9/26~9/27 | 2,3학년', '11/1~11/3 | 3학년', '11/29~12/1 | 2학년', '24.2/6 (겨울방학: 12/29~24.2/1)'],
+  [35.880818, 128.598612, '경명여자중학교', 'https://kmschool.dge.ms.kr', '7/27', '9/21~9/22 | 2,3학년', '10/31~11/2 | 3학년', '11/27~11/29 | 2학년', '12/15'],
+  [35.881453, 128.576243, '경일중학교','https://e-kyungil.dge.ms.kr', '8/16', '9/25~9/26 | 2,3학년', '11/1~11/3 | 3학년', '12/6~12/8 | 2학년', '2/1 (겨울방학: 12/29~24.1/28)'],
+  [35.889879, 128.588891, '침산중학교', 'https://chimsan.dge.ms.kr', '8/18', '9/26~9/27 | 2,3학년', '11/1~11/3 | 3학년', '11/29~12/1 | 2학년', '2/7 (겨울방학: 12/29~24.1/31)']
 ];
 
 var markers = [];
@@ -70,13 +71,17 @@ for (var i = 0; i < data.length; i++) {
   liMidterm.textContent = '중간고사: ' + data[i][5];
   ul.appendChild(liMidterm);
     
-  var liTest2 = document.createElement('li');
-  liTest2.textContent = 'Test 2';
-  ul.appendChild(liTest2);
+  var liFinterm3 = document.createElement('li');
+  liFinterm3.textContent = '기말고사: ' + data[i][6];
+  ul.appendChild(liFinterm3);
     
-  var liTest3 = document.createElement('li');
-  liTest3.textContent = 'Test 3';
-  ul.appendChild(liTest3);
+  var liFinterm2 = document.createElement('li');
+  liFinterm2.textContent = '기말고사: ' + data[i][7];
+  ul.appendChild(liFinterm2);
+
+  var Closing = document.createElement('li');
+  Closing.textContent = '종업/졸업식: ' + data[i][8];
+  ul.appendChild(Closing);
 
   explainDiv.appendChild(ul);
   infoDiv.appendChild(explainDiv);
