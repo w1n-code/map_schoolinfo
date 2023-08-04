@@ -1,7 +1,7 @@
 *,body{margin:0;padding:0}
 .AppHeader,body{width:100vw;display:flex}*{box-sizing:border-box}:root{--menu-speed:0.75s}body{font-family:Roboto;line-height:1.4;height:100vh;overflow:hidden;flex-direction:column}
 .AppHeader{background-color:#000;height:50px;z-index:2;position:absolute;justify-content:center;align-items:center}
-.schoolinfo{color:#fff}
+.schoolinfo{color:#fff; z-index: 3;}
 .menu,.menu>div{top:0;left:0;display:flex;text-align:center;opacity:0}
 .menu-wrap{position:fixed;top:0;left:0;z-index:1}
 .menu-wrap .toggler{position:absolute;top:0;left:0;opacity:0;height:50px;width:50px;cursor:pointer;z-index:2}
