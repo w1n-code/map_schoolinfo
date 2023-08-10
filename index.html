@@ -33,6 +33,7 @@
           </ul>
         </div>
       </div>
+      <div class="speech-bubble">Click me!</div>
     </div>
     <h1 class="schoolinfo">학사일정</h1><p style="color:white">(BETA ver)</p>
   </header>
@@ -44,5 +45,13 @@
 </footer>
   <script src="map.js"></script>
   <script src="menu.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+      $(".speech-bubble").click(function() {
+        $(this).fadeOut();
+      });
+    });
+    </script>
 </body>
 </html>
