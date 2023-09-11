@@ -65,10 +65,10 @@ for (var i = 0; i < data.length; i++) {
   liTest1.appendChild(aTag);
   ul.appendChild(liTest1);
 
-  for(let j=0; j < data[i].length; j++){
+  for(let j=4; j < data[i].length; j++){
       var some = document.createElement('li');
   		some.textContent = data[i][j];
- 			ul.appendChild(some);
+ 		  ul.appendChild(some);
   }
 
   explainDiv.appendChild(ul);
