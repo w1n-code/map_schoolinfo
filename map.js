@@ -17,93 +17,125 @@ var data = [
 ];
 var markers = [];
 var overlays = [];
+var infowindows = [];
 
 for (var i = 0; i < data.length; i++) {
-  var marker = new kakao.maps.Marker({
-    map: map,
-    position: new kakao.maps.LatLng(data[i][0], data[i][1])
-  });
+	  var marker = new kakao.maps.Marker({
+	    map: map,
+	    position: new kakao.maps.LatLng(data[i][0], data[i][1])
+	  });
 
-  var contentDiv = document.createElement('div');
-  contentDiv.className = 'wrap';
+    var infowindow = new kakao.maps.InfoWindow({
+        content: '<div class="infowindow">'+data[i][2]+'</div>'
+    });
+    infowindow.open(map, marker);
+    infowindows.push(infowindow);
 
-  contentDiv.addEventListener('wheel', function() {
-    kakao.maps.event.preventMap();
-  });
-  contentDiv.addEventListener('touchstart', function() {
-     kakao.maps.event.preventMap();
-   });
+    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+    
+    function makeOverListener(map, marker, infowindow) {
+        return function() {
+            infowindow.open(map, marker);
+        };
+	  }
 
-  var infoDiv = document.createElement('div');
-  infoDiv.className = 'info';
+    function makeOutListener(infowindow) {
+        return function() {
+            infowindow.close();
+        };
+    }
 
-  var titleDiv = document.createElement('div');
-  titleDiv.className = 'title';
-  titleDiv.textContent = data[i][2];
+    var contentDiv = document.createElement('div');   
+    contentDiv.className = 'wrap';
 
-  var closeDiv = document.createElement('div');
-  closeDiv.className = 'close';
-  closeDiv.title = 'close';
-  closeDiv.onclick = (function (index) {
-    return function () {
-      closeOverlay(index);
-    };
-  })(i);
+	  contentDiv.addEventListener('wheel', function() {
+	    kakao.maps.event.preventMap();
+	  });
+	  contentDiv.addEventListener('touchstart', function() {
+	     kakao.maps.event.preventMap();
+	   });
 
-  titleDiv.appendChild(closeDiv);
-  infoDiv.appendChild(titleDiv);
-
-  var explainDiv = document.createElement('div');
-  explainDiv.className = 'explain';
-
-  var ul = document.createElement('ul');
-
-  var liTest1 = document.createElement('li');
-  var aTag = document.createElement('a');
-  aTag.textContent = '학교 홈페이지로 이동';
-  aTag.href = data[i][3];
-  liTest1.appendChild(aTag);
-  ul.appendChild(liTest1);
-
-  for(let j=4; j < data[i].length; j++){
-      var some = document.createElement('li');
-  		some.textContent = data[i][j];
- 		  ul.appendChild(some);
-  }
-
-  explainDiv.appendChild(ul);
-  infoDiv.appendChild(explainDiv);
-  contentDiv.appendChild(infoDiv);
-
-  var overlay = new kakao.maps.CustomOverlay({
-    content: contentDiv,
-    map: map,
-    position: new kakao.maps.LatLng(data[i][0], data[i][1])
-  });
-
-  markers.push(marker);
-  overlays.push(overlay);
+	  var infoDiv = document.createElement('div');
+	  infoDiv.className = 'info';
+	
+	  var titleDiv = document.createElement('div');
+	  titleDiv.className = 'title';
+	  titleDiv.textContent = data[i][2];
+	
+	  var closeDiv = document.createElement('div');
+	  closeDiv.className = 'close';
+	  closeDiv.title = 'close';
+	  closeDiv.onclick = (function (index) {
+	    return function () {
+	      closeOverlay(index);
+	    };
+	  })(i);
+	
+	  titleDiv.appendChild(closeDiv);
+	  infoDiv.appendChild(titleDiv);
+	
+	  var explainDiv = document.createElement('div');
+	  explainDiv.className = 'explain';
+	
+	  var ul = document.createElement('ul');
+	
+	  var liTest1 = document.createElement('li');
+	  var aTag = document.createElement('a');
+	  aTag.textContent = '학교 홈페이지로 이동';
+	  aTag.href = data[i][3];
+	  liTest1.appendChild(aTag);
+	  ul.appendChild(liTest1);
+	
+	  for(let j=4; j < data[i].length; j++){
+	      var some = document.createElement('li');
+	  		some.textContent = data[i][j];
+	 		  ul.appendChild(some);
+	  }
+	
+	  explainDiv.appendChild(ul);
+	  infoDiv.appendChild(explainDiv);
+	  contentDiv.appendChild(infoDiv);
+	
+	  var overlay = new kakao.maps.CustomOverlay({
+	    content: contentDiv,
+	    map: map,
+	    position: new kakao.maps.LatLng(data[i][0], data[i][1])
+	  });
+	
+	  markers.push(marker);
+	  overlays.push(overlay);
 }
+
+
+///////////////////////////////////////////////////////////////////////////
+
 
 function closeOverlay(index) {
-  overlays[index].setMap(null);
+	overlays[index].setMap(null);
 }
 
-    closeAllOverlays();
-
-  // Function to close all overlays
-  function closeAllOverlays() {
-    for (var i = 0; i < overlays.length; i++) {
-      overlays[i].setMap(null);
-    }
-  }
-
-  // Add click event listeners to the markers to create and show the overlay
-  for (var i = 0; i < markers.length; i++) {
-    kakao.maps.event.addListener(markers[i], 'click', (function(index) {
-      return function() {
-        //closeAllOverlays(); // Close any previously open overlay
-        overlays[index].setMap(map); // Show the clicked overlay
-      };
-    })(i));
-  }
+// click event listeners to the markers to create and show the overlay
+for (var i = 0; i < markers.length; i++) {
+	kakao.maps.event.addListener(markers[i], 'click', (function(index) {
+		return function() {
+			//closeAllOverlays(); // Close any previously open overlay
+			overlays[index].setMap(map); // Show the clicked overlay
+		};
+	})(i));
+}
+    
+var infowindow = document.querySelectorAll('.infowindow');
+infowindow.forEach(function(e) {
+	var w = e.offsetWidth + 10;
+	var ml = w/2;
+	e.parentElement.style.top = "82px";
+	e.parentElement.style.left = "50%";
+	e.parentElement.style.marginLeft = -ml+"px";
+	e.parentElement.style.width = w+"px";
+	e.parentElement.previousSibling.style.display = "none";
+	e.parentElement.parentElement.style.border = "0px";
+	e.parentElement.parentElement.style.background = "unset";
+});
+	
+closeAllOverlays();
